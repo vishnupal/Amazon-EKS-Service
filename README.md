@@ -31,14 +31,14 @@ nodeGroups:
 eksctl create -f create_cluster.yml
 ```
 ![](images/cluster.jpg)
-## Then after cluster created , it might take almost 15-20 minutes as this code first contact to cloud formation, and cloud formation code is created for launching these resources from code and then the cluster is clustered and then the node groups are created.
+### Then after cluster created , it might take almost 15-20 minutes as this code first contact to cloud formation, and cloud formation code is created for launching these resources from code and then the cluster is clustered and then the node groups are created.
 ![](images/formation2.jpg)
-## With cluster it is automatically start different Aws service like VPC,EIP subnet, security group 
+### With cluster it is automatically start different Aws service like VPC,EIP subnet, security group 
 ![](images/vpc1.jpg)
 ![](images/eip1.jpg)
 ![](images/subnet2.jpg)
 ![](images/sg2.jpg)
-## Here my ec2 intance (nodes) are launch , 
+### Here my ec2 intance (nodes) are launch , 
 ![](images/nodes1.jpg)
 ### Then we need to update the kubeconfig file for setting the current cluster details like the server IP, certificate authority, and the authentication of the kubectl so that client can launch their apps in that cluster using kubectl command.
 ```
@@ -61,7 +61,7 @@ yum install amazon-efs-utils -y
 
 ```
 ### The efs-provisioner allows you to mount EFS storage as PersistentVolumes in kubernetes. It consists of a container that has access to an AWS EFS resource. The container reads a configmap which contains the EFS filesystem ID, the AWS region, and the name you want to use for your efs-provisioner.
-# CREATE AN EFS PROVISIONER 
+## CREATE AN EFS PROVISIONER 
 ### But before creating the Efs- provisioner, create the EFS from where the pods will get the real storage.
 ### The efs-provisioner allows you to mount EFS storage as PersistentVolumes in kubernetes. It consists of a container that has access to an AWS EFS resource. The container reads a configmap which contains the EFS filesystem ID, the AWS region, and the name you want to use for your efs-provisioner.But before creating the Efs- provisioner, create the EFS from where the pods will get the real storage.
 
@@ -107,7 +107,7 @@ spec:
             path: /
 ```
 ![](images/efs_prp.jpg)
-# CREATE A CLUSTER ROLE BINDING FOR EFS PROVISIONER:
+## CREATE A CLUSTER ROLE BINDING FOR EFS PROVISIONER:
 
 ### Create a file, cluster role binding.YAML, that defines a cluster role binding that assigns the defined role to the service account.No alt text provided for this image
 ```
@@ -127,7 +127,7 @@ roleRef:
 ```
 ![](images/rbac.jpg)
 
-# CREATE THE STORAGE CLASS WITH PROVISIONER AS EFS PROVISIONER WHICH WE HAD CREATED :
+## CREATE THE STORAGE CLASS WITH PROVISIONER AS EFS PROVISIONER WHICH WE HAD CREATED :
 ### I created the storage class and the Pvc using the below manifest file
 ```
 kind: StorageClass
@@ -164,7 +164,7 @@ spec:
           
 ```
    ![](images/storage2.jpg)
-#  CREATE A SECRET FOR THE MYSQL_ROOT_PASSWORD AND JOOMLA_DB_PASSWORD
+##  CREATE A SECRET FOR THE MYSQL_ROOT_PASSWORD AND JOOMLA_DB_PASSWORD
 ### FOR creating the secret here we use base64 encoder , you can use command line or some online encoder also use.
 ```
    
@@ -176,7 +176,7 @@ data:
   password: cmVkaGF0
 
 ```
-# NOW CREATE THE DEPLOYMENT FOR MYSQL AND THEN THE JOOMLA AS ALL THE DATA OF JOOMLA GOING TO BE STORED IN THE MYSQL 
+## NOW CREATE THE DEPLOYMENT FOR MYSQL AND THEN THE JOOMLA AS ALL THE DATA OF JOOMLA GOING TO BE STORED IN THE MYSQL 
 ### For env varible you can find the docker hub site here i use mysql 5.6 version use
 ```
 kubectl create -f create_secret.yml
@@ -306,7 +306,7 @@ spec:
 ![](images/joomla.jpg)
 ![](images/resorce.jpg)
 
-## Some configuration before launch 
+### Some configuration before launch 
 
 
 ![](images/site1.jpg)
