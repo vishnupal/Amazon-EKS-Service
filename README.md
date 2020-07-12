@@ -5,6 +5,8 @@
 
 ### Before going to task i create IAM user and give the full root access to it
 ![IAm](images/iam_user.jpg)
+
+![aws](images/list.jpg)
 ```
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
@@ -19,6 +21,16 @@ nodeGroups:
     publicKeyName: my_vpc
 
 ```
+```
+eksctl create -f create_cluster.yml
+```
+![](images/cluster.jpg)
+![](images/formation1.jpg)
+![](images/vpc.jpg)
+![](images/eip.jpg)
+![](images/subnet.jpg)
+![](images/sg1.jpg)
+![](images/nodes.jpg)
 
 
 ```
