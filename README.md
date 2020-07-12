@@ -3,7 +3,8 @@
 
 ### Amazon EKS is a managed service that helps make it easier to run Kubernetes on AWS. Through EKS, organizations can run Kubernetes without installing and operating a Kubernetes control plane or worker nodes. Simply put, EKS is a managed containers-as-a-service (CaaS) that drastically simplifies Kubernetes deployment on AWS.
 
-### To understand Amazon EKS better, let’s take a step back. Here’s a quick overview of Kubernetes.
+### Before going to task i create IAM user and give the full root access to it
+![IAm](images/iam_user.jpg)
 ```
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
