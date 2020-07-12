@@ -32,7 +32,26 @@ eksctl create -f create_cluster.yml
 ![](images/sg2.jpg)
 ![](images/nodes1.jpg)
 
-![]
+```
+aws eks update-kubeconfig --name <cluster name>
+```
+```
+kubectl create ns <namespace name>
+```
+```
+kubectl config set-context --current --namespace=<namespace name>
+```
+```
+ssh -i  <key.pemfile>    -l   <username>  <Public Ip of  the instance>
+
+yum install amazon-efs-utils -y      
+
+```
+### The efs-provisioner allows you to mount EFS storage as PersistentVolumes in kubernetes. It consists of a container that has access to an AWS EFS resource. The container reads a configmap which contains the EFS filesystem ID, the AWS region, and the name you want to use for your efs-provisioner.
+
+### But before creating the Efs- provisioner, create the EFS from where the pods will get the real storage.
+![](images/efs.jpg)
+![](images/efs2.jpg)
 ```
 kind: Deployment
 apiVersion: apps/v1
@@ -69,7 +88,7 @@ spec:
             server: fs-3d28a2ec.efs.ap-south-1.amazonaws.com
             path: /
 ```
-   dfg
+![](images/efs_prp.jpg)
 ```
     ---
 apiVersion: rbac.authorization.k8s.io/v1beta1
@@ -85,7 +104,9 @@ roleRef:
   name: cluster-admin
   apiGroup: rbac.authorization.k8s.io
 ```
-fff
+![](images/rbac.jpg)
+
+
 ```
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
@@ -120,7 +141,7 @@ spec:
       storage: 2Gi
           
 ```
-   fff
+   ![](images/storage2.jpg)
 ```
    
  apiVersion: v1
@@ -131,7 +152,9 @@ data:
   password: cmVkaGF0
 
  ```
- ff
+```
+kubectl create -f create_secret.yml
+```
  
  ```
    apiVersion: v1
@@ -204,8 +227,7 @@ spec:
           claimName: efs-mysql
             
 ```
-  ff
-  ff
+
 ```
     
 apiVersion: v1
@@ -264,5 +286,6 @@ spec:
           claimName: efs-joomla
 ```
 
-         
+![](images/site1.jpg)
+![](images/login23.jpg)
       
