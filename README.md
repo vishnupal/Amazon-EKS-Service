@@ -32,7 +32,7 @@ eksctl create -f create_cluster.yml
 ![](images/sg1.jpg)
 ![](images/nodes.jpg)
 
-
+![]
 ```
 kind: Deployment
 apiVersion: apps/v1
