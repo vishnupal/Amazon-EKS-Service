@@ -319,3 +319,21 @@ eksctl delete cluster -f create_cluster.yml
 
 ```
  ![](images/delete.jpg)
+
+
+### here can also use Fargate Profile for the Serverless Cluster.
+### In the mumbai region this service my be not available 
+```
+ apiVersion: eksctl.io/v1alpha5
+  kind: ClusterConfig
+
+  metadata:
+    name: fg-cluster
+    region: us-east-1
+
+  fargateProfiles:
+    - name: fargate-default
+      selectors:
+       - namespace: kube-system
+       - namespace: default
+```
